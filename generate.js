@@ -16,6 +16,8 @@ const commitsArray = output
 
 const currentChangelog = fs.readFileSync("./CHANGELOG.md", "utf-8");
 const currentVersion = Number(require("./release_version.json").version);
+const commitPath = String(require("./release_version.json").origin);
+
 const newVersion = currentVersion + 1;
 
 // 用version和时间作为release 标记
@@ -24,7 +26,7 @@ let newChangelog = `# Version ${newVersion} (${
 })\n\n`;
 
 const features = [];
-const Bugfixes = [];
+const bugfixes = [];
 
 // 分别维护features和bugfixes的内容，并将message和commit的链接进行绑定
 commitsArray.forEach(commit => {
@@ -33,17 +35,17 @@ commitsArray.forEach(commit => {
       `* ${commit.message.replace("feature: ", "")} ([${commit.sha.substring(
         0,
         6
-      )}](https://github.com/BaronStack/release_notes/commit/${
+      )}](${commitPath}/${
         commit.sha
       }))\n`
     );
   }
   if (commit.message.startsWith("chore: ")) {
-    Bugfixes.push(
+    bugfixes.push(
       `* ${commit.message.replace("chore: ", "")} ([${commit.sha.substring(
         0,
         6
-      )}](https://github.com/BaronStack/release_notes/commit/${
+      )}](${commitPath}/${
         commit.sha
       }))\n`
     );
@@ -58,7 +60,7 @@ if (features.length) {
   newChangelog += '\n';
 }
 
-if (Bugfixes.length) {
+if (bugfixes.length) {
   newChangelog += `## Bugfixes\n`;
   bugfixes.forEach(bugfix => {
     newChangelog += bugfix;
