@@ -40,9 +40,9 @@ commitsArray.forEach(commit => {
       }))\n`
     );
   }
-  if (commit.message.startsWith("chore: ")) {
+  if (commit.message.startsWith("bugfixes: ")) {
     bugfixes.push(
-      `* ${commit.message.replace("chore: ", "")} ([${commit.sha.substring(
+      `* ${commit.message.replace("bugfixes: ", "")} ([${commit.sha.substring(
         0,
         6
       )}](${commitPath}/${
