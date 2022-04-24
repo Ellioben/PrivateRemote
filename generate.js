@@ -15,13 +15,13 @@ const commitsArray = output
   .filter(commit => Boolean(commit.sha));
 
 const currentChangelog = fs.readFileSync("./CHANGELOG.md", "utf-8");
-const currentVersion = Number(require("./release_version.json").version);
+const currentVersion = String(require("./release_version.json").version);
 const commitPath = String(require("./release_version.json").origin);
 
 const newVersion = currentVersion + 1;
 
 // 用version和时间作为release 标记
-let newChangelog = `# Version ${newVersion} (${
+let newChangelog = `# Version ${currentVersion} (${
   new Date().toISOString().split("T")[0]
 })\n\n`;
 
