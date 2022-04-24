@@ -30,9 +30,9 @@ const bugfixes = [];
 
 // 分别维护features和bugfixes的内容，并将message和commit的链接进行绑定
 commitsArray.forEach(commit => {
-  if (commit.message.startsWith("feature: ")) {
+  if (commit.message.startsWith("features: ")) {
     features.push(
-      `* ${commit.message.replace("feature: ", "")} ([${commit.sha.substring(
+      `* ${commit.message.replace("features: ", "")} ([${commit.sha.substring(
         0,
         6
       )}](${commitPath}/${
