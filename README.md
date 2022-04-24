@@ -11,7 +11,7 @@ wwwwwwww_
 
 添加bug Bugfixes🍿     
 add 🍱       
-add test  
+add 0.0.1  
 fix bugs /bug1/bug2/bug3/1111   
 add nide 
 add ⭕️
